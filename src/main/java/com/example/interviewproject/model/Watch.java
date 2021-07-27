@@ -15,9 +15,9 @@ public class Watch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String watchName;
     private int unitPrice;
-    private boolean discount;
+    private String discount;
 
 }
