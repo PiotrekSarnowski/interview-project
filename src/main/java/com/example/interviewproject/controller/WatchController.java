@@ -2,9 +2,7 @@ package com.example.interviewproject.controller;
 
 import com.example.interviewproject.service.WatchService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,8 +12,8 @@ public class WatchController {
 
     private WatchService watchService;
 
-    @PostMapping("/checkout")
-    public Integer calculateTotalPrice(@RequestBody List<Long> checkoutList) {
+    @GetMapping(value = "/checkout")
+    public Integer calculateTotalPrice(@RequestBody List<String> checkoutList) {
         return watchService.calculateTotalPrice(checkoutList);
     }
 }

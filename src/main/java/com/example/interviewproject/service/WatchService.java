@@ -3,7 +3,6 @@ package com.example.interviewproject.service;
 import com.example.interviewproject.model.DiscountOfferDictionary;
 import com.example.interviewproject.model.RegularOffer;
 import com.example.interviewproject.model.RegularOfferDictionary;
-import com.example.interviewproject.model.Watch;
 import com.example.interviewproject.repository.WatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,15 +15,14 @@ public class WatchService {
 
     private WatchRepository watchRepository;
 
-    public Integer calculateTotalPrice(List<Long> itemsList) {
+    public Integer calculateTotalPrice(List<String> itemsList) {
 
         Integer total = 0;
-        Set<Long> items = new HashSet<Long>(itemsList);
+        Set<String> items = new HashSet<String>(itemsList);
 
-        for (Iterator<Long> i = items.iterator(); i.hasNext();) {
-            Long item = i.next();
+        for (Iterator<String> i = items.iterator(); i.hasNext();) {
+            String item = i.next();
             Integer quantity = Collections.frequency(itemsList, item);
-            Watch watch = watchRepository.getById(item);
             if(DiscountOfferDictionary.discountOfferMap.containsKey(item)){
 
                 RegularOffer regularOffer = DiscountOfferDictionary.discountOfferMap.get(item);
